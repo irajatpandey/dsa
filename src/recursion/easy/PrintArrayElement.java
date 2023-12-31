@@ -18,5 +18,7 @@ public class PrintArrayElement {
         for(int ele : smallOutput){
             System.out.print(ele + " ");
         }
+        int arr[] = new int[2];
+
     }
 }
