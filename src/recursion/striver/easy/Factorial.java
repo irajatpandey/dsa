@@ -1,6 +1,4 @@
-package recursion.easy;
-
-import java.util.ArrayList;
+package recursion.striver.easy;
 
 public class Factorial {
     public static int factorial(int n){

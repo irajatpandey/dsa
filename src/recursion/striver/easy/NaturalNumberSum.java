@@ -1,4 +1,4 @@
-package recursion.easy;
+package recursion.striver.easy;
 
 public class NaturalNumberSum {
     public static int getSum(int n){

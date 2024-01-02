@@ -1,4 +1,4 @@
-package recursion.easy;
+package recursion.striver.easy;
 import java.util.ArrayList;
 public class FibonacciSequence {
     public static void fn(int n,  int []ls, int i ){
