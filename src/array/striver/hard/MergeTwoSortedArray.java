@@ -117,8 +117,8 @@ public class MergeTwoSortedArray {
         for(int ele : arr2) System.out.print(ele + " ");
     }
     public static void main(String[] args) {
-        int arr1[] = {1,2,3};
-        int arr2[] = {2,5,6};
+        int[] arr1 = {1,2,3};
+        int[] arr2 = {2,5,6};
 
 //        merge_WithExtraSpace(arr1, arr2, arr1.length, arr2.length);
 //        merge_Optimal1(arr1, arr2, arr1.length, arr2.length);
