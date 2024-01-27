@@ -17,8 +17,8 @@ public class CountInversions {
         return ans;
     }
 
-    public static void merge(int[] arr, int start, int mid, int end, ArrayList<Integer> ls){
-        int left = 0, right = 0;
+    public static int merge(int[] arr, int start, int mid, int end){
+        int left = 0, right = 0, count = 0;
 
         // Create Two Arrays
         int[] leftArray = new int[mid - start + 1];
@@ -43,6 +43,7 @@ public class CountInversions {
             }
             else{
                 arr[k] = rightArray[right];
+                count += (mid + 1) - (start + left);
                 right++;
             }
             k++;
@@ -59,31 +60,24 @@ public class CountInversions {
             k++;
             right++;
         }
+        return count;
     }
-    public static void mergeSort(int[] arr, int start, int end,  ArrayList<Integer> ls){
-
+    public static int mergeSort(int[] arr, int start, int end){
+        int count = 0;
         if(start < end){
             int mid = (start + end)/2;
 
             // Merge Sort Call
-            mergeSort(arr, start, mid, ls);
-            mergeSort(arr, mid + 1, end, ls);
-            merge(arr,start, mid, end, ls);
+            count += mergeSort(arr, start, mid);
+            count += mergeSort(arr, mid + 1, end);
+            count += merge(arr,start, mid, end);
         }
-
+        return count;
     }
 
     public static int numberOfInversions_mergeSort(int []arr, int n) {
-        int count = 0;
-
-        ArrayList<Integer> ls = new ArrayList<>();
-        mergeSort(arr, 0, n, ls);
-
-        for(int ele : ls){
-            System.out.print(ele + " ");
-        }
-
-        return  count;
+        int totalCount = mergeSort(arr, 0, n);
+        return totalCount;
 
     }
 
@@ -91,13 +85,12 @@ public class CountInversions {
         int[] arr = {5, 3, 2, 4, 1};
         int n = arr.length;
 
-//        int output1 = numberOfInversions_bruteForce(arr, n);
-//        System.out.println(output1);
+        int output1 = numberOfInversions_bruteForce(arr, n);
+        System.out.println(output1);
 
         int output2 = numberOfInversions_mergeSort(arr, n - 1);
 
-        for(int ele : arr) System.out.print(ele + " ");
-
+        System.out.println(output2);
 
     }
 }
