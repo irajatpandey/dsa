@@ -64,12 +64,8 @@ public class CountInversions {
 
         if(start < end){
             int mid = (start + end)/2;
-            //System.out.println(mid);
-            int[] leftArray = new int[mid - start + 1];
-            int[] rightArray = new int[end - mid];
 
-
-
+            // Merge Sort Call
             mergeSort(arr, start, mid, ls);
             mergeSort(arr, mid + 1, end, ls);
             merge(arr,start, mid, end, ls);
