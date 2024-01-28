@@ -1,8 +1,8 @@
 package linkedlist.template;
 
 public class Node<T>{
-    T data;
-    Node<T> next;
+    public T data;
+    public Node<T> next;
     Node(){
 
     }
