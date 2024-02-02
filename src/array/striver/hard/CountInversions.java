@@ -77,9 +77,12 @@ public class CountInversions {
 
     public static int numberOfInversions_mergeSort(int []arr, int n) {
         int totalCount = mergeSort(arr, 0, n);
+
         return totalCount;
 
     }
+
+
 
     public static void main(String[] args) {
         int[] arr = {5, 3, 2, 4, 1};
