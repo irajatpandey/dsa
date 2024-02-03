@@ -4,6 +4,7 @@ import linkedlist.template.LinkedListImplementation;
 import linkedlist.template.Node;
 
 // https://leetcode.com/problems/sort-list/description/
+// T.C (nlogn)
 public class MergeSortLL {
     public static Node<Integer> findMiddle(Node<Integer> head) {
         Node<Integer> fast = head, slow = head;
