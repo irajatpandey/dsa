@@ -3,6 +3,9 @@ import linkedlist.template.LinkedListImplementation;
 import linkedlist.template.Node;
 
 public class AddTwoLL {
+    //    https://leetcode.com/problems/add-two-numbers/
+    // T.C O(m + n)
+    // S.C O(N), where N is larger list among both.
     public static Node<Integer> addTwoLL(Node<Integer> head1, Node<Integer> head2){
         int sum = 0, carry = 0;
 
