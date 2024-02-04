@@ -1,20 +1,18 @@
-package binarysearch;
+package binarysearch.striver.easy;
 
 public class UpperBound {
-    public static int upperBound(int []arr, int n, int target) {
+    public static int upperBound(int[] arr, int n, int target) {
 
         int start = 0, end = n - 1;
         int lower_bound = -1;
 
-        while(start <= end){
-            int mid = start + (end - start)/2;
+        while (start <= end) {
+            int mid = start + (end - start) / 2;
 
-            if(arr[mid] > target) {
+            if (arr[mid] > target) {
                 lower_bound = mid;
-
                 end = mid - 1;
-            }
-            else{
+            } else {
                 start = mid + 1;
             }
 
@@ -22,6 +20,7 @@ public class UpperBound {
         return lower_bound;
 
     }
+
     public static void main(String[] args) {
         int[] arr = {3, 5, 8, 15, 19};
         int target = 9;
