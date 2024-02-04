@@ -1,6 +1,8 @@
 package linkedlist.doublyLL.medium;
 import linkedlist.doublyLL.template.DoublyLinkedListImplementation;
 import linkedlist.doublyLL.template.Node;
+
+
 public class RemoveDuplicates {
     // https://www.geeksforgeeks.org/problems/remove-duplicates-from-a-sorted-doubly-linked-list/1
     public static Node<Integer> removeDuplicates(Node<Integer> head){
@@ -40,7 +42,6 @@ public class RemoveDuplicates {
         l1.addAtEnd(4);
 
         Node<Integer> head = l1.getHead();
-
         Node<Integer> output = removeDuplicates(head);
 
         while(output != null){
