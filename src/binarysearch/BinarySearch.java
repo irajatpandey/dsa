@@ -1,8 +1,9 @@
-package array.searching.linearsearch.binarysearch;
+package binarysearch;
 
 public class BinarySearch {
 
     //Iterative Approach
+    // O(logn)
     public static int binarySearch_iterative(int[] arr, int start, int end, int target){
         while(start <= end){
             int mid = (start + end)/2;
@@ -35,8 +36,9 @@ public class BinarySearch {
         else{
             return binarySearch_recursive(arr, mid + 1, end, target);
         }
-
     }
+
+
     public static void main(String[] args) {
 
         int arr[] = {10, 20, 30, 40, 50, 60, 70, 80, 90, 100};
