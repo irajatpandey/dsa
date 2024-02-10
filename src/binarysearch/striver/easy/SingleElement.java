@@ -1,6 +1,8 @@
 package binarysearch.striver.easy;
 
 public class SingleElement {
+    //https://leetcode.com/problems/single-element-in-a-sorted-array/
+    // T.C : O(log(n))
     public static int singleNonDuplicate(int[] nums) {
 
 //        int[] nums = arr.stream().mapToInt(i -> i).toArray(); to convert ArrayList into Array
