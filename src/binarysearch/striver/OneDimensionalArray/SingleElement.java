@@ -1,4 +1,4 @@
-package binarysearch.striver.easy;
+package binarysearch.striver.OneDimensionalArray;
 
 public class SingleElement {
     //https://leetcode.com/problems/single-element-in-a-sorted-array/

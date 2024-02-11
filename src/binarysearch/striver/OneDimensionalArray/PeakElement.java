@@ -1,4 +1,4 @@
-package binarysearch.striver.easy;
+package binarysearch.striver.OneDimensionalArray;
 
 public class PeakElement {
     public static int findPeakElement(int[] nums) {

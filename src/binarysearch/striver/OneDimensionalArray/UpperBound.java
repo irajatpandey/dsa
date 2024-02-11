@@ -1,4 +1,4 @@
-package binarysearch.striver.easy;
+package binarysearch.striver.OneDimensionalArray;
 
 public class UpperBound {
     public static int upperBound(int[] arr, int n, int target) {

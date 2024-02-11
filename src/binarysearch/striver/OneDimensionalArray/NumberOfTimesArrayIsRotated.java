@@ -1,4 +1,4 @@
-package binarysearch.striver.easy;
+package binarysearch.striver.OneDimensionalArray;
 
 public class NumberOfTimesArrayIsRotated {
     // https://www.codingninjas.com/studio/problems/rotation_7449070?

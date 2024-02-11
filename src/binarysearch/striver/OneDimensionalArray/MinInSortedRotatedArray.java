@@ -1,4 +1,4 @@
-package binarysearch.striver.easy;
+package binarysearch.striver.OneDimensionalArray;
 
 public class MinInSortedRotatedArray {
     //https://leetcode.com/problems/find-minimum-in-rotated-sorted-array/
