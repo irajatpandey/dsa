@@ -9,11 +9,11 @@ public class MinInSortedRotatedArray {
         while(start <= end){
             int mid = start + (end - start)/2;
             if(nums[start] <= nums[mid]){
-                ans = Integer.min(ans, nums[start]);
+                ans = Math.min(ans, nums[start]);
                 start = mid + 1;
             }
             else{
-                ans = Integer.min(ans, nums[mid]);
+                ans = Math.min(ans, nums[mid]);
                 end = mid - 1;
             }
         }
