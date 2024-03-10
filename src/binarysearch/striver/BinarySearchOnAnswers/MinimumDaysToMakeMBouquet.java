@@ -1,5 +1,5 @@
 package binarysearch.striver.BinarySearchOnAnswers;
-
+// https://leetcode.com/problems/minimum-number-of-days-to-make-m-bouquets/description/
 public class MinimumDaysToMakeMBouquet {
     public static boolean possible(int[] arr, int day, int m, int k) {
         int n = arr.length; // Size of the array
