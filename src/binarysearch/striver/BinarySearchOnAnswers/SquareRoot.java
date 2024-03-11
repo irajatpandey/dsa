@@ -20,5 +20,6 @@ public class SquareRoot {
     public static void main(String[] args) {
         int n = 7;
         System.out.println(findSqrt(n));
+
     }
 }
