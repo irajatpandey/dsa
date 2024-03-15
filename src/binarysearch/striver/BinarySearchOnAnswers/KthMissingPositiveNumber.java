@@ -16,8 +16,6 @@ public class KthMissingPositiveNumber {
     //T.C O(logn)
     public static int findKthPositive(int[] arr, int k) {
         int n = arr.length;
-        // where exactly kth missing number will fall
-
         int low =  0, high = n - 1;
 
         while(low <= high){
@@ -31,8 +29,9 @@ public class KthMissingPositiveNumber {
             }
         }
 
-        return low + k;
+        return low + k;  // high + 1 + k
     }
+
     public static void main(String[] args) {
         int arr[] = {2,3,4,7,11};
         int k = 5;
