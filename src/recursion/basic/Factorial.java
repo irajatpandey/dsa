@@ -1,4 +1,4 @@
-package recursion.striver.easy;
+package recursion.basic;
 
 public class Factorial {
     public static int factorial(int n){
