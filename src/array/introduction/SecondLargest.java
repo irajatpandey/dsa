@@ -12,6 +12,9 @@ public class SecondLargest {
                 secondLargest = largest;
                 largest = a[i];
             }
+            else if(a[i] > secondLargest && largest != a[i]){
+                secondLargest = a[i];
+            }
             if(a[i] < smallest){
                 secondSmallest = smallest;
                 smallest = a[i];
