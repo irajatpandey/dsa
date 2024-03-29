@@ -5,6 +5,33 @@ import java.util.List;
 
 public class SubSequenceAllType {
 
+    // to check any subset/subsequence is present or not
+    // https://www.naukri.com/code360/problems/subset-sum_630213
+    public static boolean isSubsetPresentHelper(int []arr, int n, int index, int k, int sumSoFar) {
+
+        if(sumSoFar > k) return false;
+        if(index == n){
+            if(sumSoFar == k){
+                return true;
+            }
+            else{
+                return false;
+            }
+        }
+
+        sumSoFar += arr[index];
+        if(isSubsetPresentHelper(arr, n, index + 1, k, sumSoFar)){
+            return true;
+        }
+        sumSoFar -= arr[index];
+        if(isSubsetPresentHelper(arr, n, index + 1, k, sumSoFar)){
+            return true;
+        }
+
+        return false;
+
+    }
+
     public static void printSubsequencesWithSumK(int[] arr, int index, int n, int sumSoFar, int k, List<Integer> subsequence){
         if(index == n){
             if(k == sumSoFar){
@@ -50,6 +77,9 @@ public class SubSequenceAllType {
 
         int output = countSubsequencesWithSumK(arr, 0, n, 0, k);
         System.out.println(output);
+        
+        boolean output2 = isSubsetPresentHelper(arr, n, 0, k, 0 );
+        System.out.println(output2);
 
 
     }
