@@ -27,6 +27,7 @@ public class NQueen {
         }
         return true;
     }
+
     private static void getNQueensHelper(char[][] board, int row, List<String> ansSoFar, List<List<String>> output) {
         if(board.length == row){
             output.add(new ArrayList<>(construct(board)));
