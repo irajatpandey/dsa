@@ -25,7 +25,11 @@ class StackUsingArray{
         stack[++top] = element;
     }
     public void pop(){
+        if(isEmpty()){
+            return;
+        }
 
+        top++;
     }
 
 }
