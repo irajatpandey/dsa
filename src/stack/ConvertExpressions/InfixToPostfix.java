@@ -31,13 +31,13 @@ public class InfixToPostfix {
                 st.push(ch);
             }
             else if(ch == ')'){
-                while(st.peek() != '('){
+                while(!st.isEmpty() && st.peek() != '('){
                     output += st.pop();
                 }
                 st.pop();
             }
             else {
-                if (!st.isEmpty() && getPrecedence(ch) <= getPrecedence(st.peek())) {
+                while (!st.isEmpty() && getPrecedence(ch) <= getPrecedence(st.peek())) {
                     output += st.pop();
                 }
                 st.push(ch);
@@ -52,8 +52,8 @@ public class InfixToPostfix {
     }
 
     public static void main(String[] args) {
-        String str = "A*B-(C+D)+E";
-
+//        String str = "A*B-(C+D)+E";
+        String str = "a+b*(c^d-e)^(f+g*h)-i";
         String output = convertInfixToPostfix(str);
         System.out.println(output);
     }
