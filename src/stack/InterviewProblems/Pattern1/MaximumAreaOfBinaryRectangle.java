@@ -8,7 +8,7 @@ public class MaximumAreaOfBinaryRectangle {
 
         int maxSoFar = LargestAreaHistogram.largestRectangleArea(mat[0]);
         maxArea = Math.max(maxSoFar, maxArea);
-
+        System.out.println(maxSoFar);
         for(int i = 1; i < mat.length; i++) {
             for (int j = 0; j < mat[i].length; j++) {
                 if(mat[i][j] == 0) {
@@ -19,6 +19,7 @@ public class MaximumAreaOfBinaryRectangle {
                 }
             }
             maxSoFar = LargestAreaHistogram.largestRectangleArea(mat[i]);
+            System.out.println("MaxSoFar " + maxSoFar);
             maxArea = Math.max(maxSoFar, maxArea);
         }
 
@@ -27,7 +28,8 @@ public class MaximumAreaOfBinaryRectangle {
     }
 
     public static void main(String[] args) {
-        int[][] matrix = {{0, 1, 1, 0}, {1, 1, 1, 1}, {1, 1, 1, 1}, {1, 1, 0, 0}};
+//        int[][] matrix = {{0, 1, 1, 0}, {1, 1, 1, 1}, {1, 1, 1, 1}, {1, 1, 0, 0}};
+        int[][] matrix = {{1, 0, 1, 0, 0}, {1, 0, 1, 1, 1}, {1, 1, 1, 1, 1}, {1, 0, 0, 1, 0}};
         int n = matrix.length;
         int m = matrix[0].length;
 
