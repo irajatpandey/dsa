@@ -33,7 +33,7 @@ public class NextSmallerLeft {
 
     public static void main(String[] args) {
         ArrayList<Integer> arr = new ArrayList<>();
-        arr.addAll(Arrays.asList(3, 1, 2, 4));
+        arr.addAll(Arrays.asList(1, 2, 3));
         System.out.println(nextSmallerElement(arr, 3));
     }
 }
