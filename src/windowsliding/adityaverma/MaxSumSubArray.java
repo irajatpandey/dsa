@@ -1,4 +1,4 @@
-package array.windowsliding.adityaverma;
+package windowsliding.adityaverma;
 
 import java.util.*;
 
