@@ -36,6 +36,7 @@ public class MaxConsecutiveOnes3 {
                 }
                 i++;
                 System.out.println(j + " " + i + " Length " + (j - i + 1));
+                System.out.println("ZeroCount: " + zeroCount);
 
             }
             ans = Math.max(ans, j - i + 1);
