@@ -7,20 +7,20 @@ public class SymmetricTreeChecker {
         return false;
     }
     public static void main(String[] args) {
-          /* Example Complex Symmetric Binary Tree:
+           /* Example Complex Symmetric Binary Tree:
                             1
                            / \
                           2   2
                          / \ / \
                         3  4 4  3
-                       /        \
+                       /         \
                       5          5
                      / \        / \
                     6   7      7   6
                    / \ / \    / \ / \
-                  8  9 9  8  8 9 9  8
-                 /             \
-                10             10
+                  8  9 9  8  8 9 9   8
+                 /             		  \
+                10             		  10
         */
         TreeNode<Integer> root = new TreeNode<>(1);
         root.left = new TreeNode<>(2);
