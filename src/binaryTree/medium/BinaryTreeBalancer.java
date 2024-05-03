@@ -8,7 +8,7 @@ public class BinaryTreeBalancer {
 
         return getHeight(root) != -1;
     }
-    private static int getHeight(TreeNode node) {
+    private static int getHeight(TreeNode<Integer> node) {
         // Base case: if node is null, return 0
         if (node == null) return 0;
 
