@@ -3,8 +3,20 @@ package binaryTree.medium;
 import binaryTree.TreeNode;
 
 public class BinaryTreeMaxPathSumFinder {
-    public static int findMaxPathSum(TreeNode<Integer> root) {
-        return -1;
+    public static int findMaxPathSum(TreeNode<Integer> root, int result) {
+        if (root == null) {
+            return 0;
+        }
+
+        int left = findMaxPathSum(root.left, result);
+        int right = findMaxPathSum(root.right, result);
+
+        int temp = Math.max(Math.max(left, right) + root.data, root.data);
+        int ans = Math.max(temp, left + right + root.data);
+
+        result = Math.max(result, ans);
+        return temp ;
+
     }
     public static void main(String[] args) {
 	/* Example Binary Tree:
@@ -25,7 +37,7 @@ public class BinaryTreeMaxPathSumFinder {
         root.right.right.left = new TreeNode<>(3);
         root.right.right.right = new TreeNode<>(4);
 
-        int output = findMaxPathSum(root);
+        int output = findMaxPathSum(root, Integer.MIN_VALUE);
         System.out.println(output);
 
     }
