@@ -2,52 +2,53 @@ package binaryTree.medium;
 
 import binaryTree.TreeNode;
 
+//https://leetcode.com/problems/symmetric-tree/description/
 public class SymmetricTreeChecker {
+    //the overall time complexity is O(n), where n is the number of nodes in the tree.
+    //the overall space complexity is O(n) in the worst case and O(log n) in the best case.
     public static boolean isSymmetric(TreeNode root) {
-        return false;
+        if(root == null) return true;
+        return isMirrorTree(root.left, root.right);
     }
+
+    private static boolean isMirrorTree(TreeNode root1, TreeNode root2) {
+        if(root1 == null && root2 == null) return true;
+        if(root1 == null || root2 == null) return false;
+
+        return root1.data == root2.data && isMirrorTree(root1.left, root2.right) && isMirrorTree(root1.right, root2.left);
+    }
+
     public static void main(String[] args) {
-           /* Example Complex Symmetric Binary Tree:
-                            1
-                           / \
-                          2   2
-                         / \ / \
-                        3  4 4  3
-                       /         \
-                      5          5
-                     / \        / \
-                    6   7      7   6
-                   / \ / \    / \ / \
-                  8  9 9  8  8 9 9   8
-                 /             		  \
-                10             		  10
-        */
+
+        /*
+
+
+             1
+            / \
+           2   2
+          / \ / \
+         3  4 4  3
+
+
+        * */
+        // Level 0
         TreeNode<Integer> root = new TreeNode<>(1);
+
+        // Level 1
         root.left = new TreeNode<>(2);
         root.right = new TreeNode<>(2);
+
+        // Level 2
         root.left.left = new TreeNode<>(3);
         root.left.right = new TreeNode<>(4);
         root.right.left = new TreeNode<>(4);
         root.right.right = new TreeNode<>(3);
-        root.left.left.left = new TreeNode<>(5);
-        root.left.left.right = new TreeNode<>(5);
-        root.right.right.left = new TreeNode<>(5);
-        root.right.right.right = new TreeNode<>(5);
-        root.left.left.left.left = new TreeNode<>(6);
-        root.left.left.left.right = new TreeNode<>(7);
-        root.left.left.right.left = new TreeNode<>(7);
-        root.left.left.right.right = new TreeNode<>(6);
-        root.right.right.left.left = new TreeNode<>(7);
-        root.right.right.left.right = new TreeNode<>(6);
-        root.right.right.right.left = new TreeNode<>(6);
-        root.right.right.right.right = new TreeNode<>(7);
-        root.left.left.left.left.left = new TreeNode<>(8);
-        root.left.left.left.left.right = new TreeNode<>(9);
-        root.left.left.left.right.left = new TreeNode<>(9);
-        root.left.left.left.right.right = new TreeNode<>(8);
-        root.right.right.right.left.left = new TreeNode<>(9);
-        root.right.right.right.right.right = new TreeNode<>(8);
-        root.left.left.left.left.left.left = new TreeNode<>(10);
-        root.right.right.right.right.right.right = new TreeNode<>(10);
+
+        if(isSymmetric(root)){
+            System.out.println("Symmetric tree");
+        }
+        else{
+            System.out.println("Not symmetric tree");
+        }
     }
 }
