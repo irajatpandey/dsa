@@ -30,12 +30,8 @@ public class RightViewFinder {
         if(root == null) return new ArrayList<>();
         List<Integer> list = new ArrayList<>();
         printRightView(root, list, 0);
-
         return list;
-
     }
-
-
 
     public static void main(String[] args) {
 
@@ -55,22 +51,22 @@ public class RightViewFinder {
                       14   15 16 17
         */
         TreeNode<Integer> root = new TreeNode<>(1);
-        root.left = null;
+        root.left = new TreeNode<>(2);
         root.right = new TreeNode<>(3);
-//        root.left.left = new TreeNode<>(4);
-//        root.left.right = new TreeNode<>(5);
-//        root.right.left = new TreeNode<>(6);
-//        root.right.right = new TreeNode<>(7);
-//        root.left.right.left = new TreeNode<>(8);
-//        root.left.right.left.left = new TreeNode<>(10);
-//        root.left.right.right = new TreeNode<>(9);
-//        root.left.right.right.right = new TreeNode<>(11);
-//        root.left.right.right.right.left = new TreeNode<>(12);
-//        root.left.right.right.right.right = new TreeNode<>(13);
-//        root.left.right.right.right.left.left = new TreeNode<>(14);
-//        root.left.right.right.right.left.right = new TreeNode<>(15);
-//        root.left.right.right.right.right.left = new TreeNode<>(16);
-//        root.left.right.right.right.right.right = new TreeNode<>(17);
+        root.left.left = new TreeNode<>(4);
+        root.left.right = new TreeNode<>(5);
+        root.right.left = new TreeNode<>(6);
+        root.right.right = new TreeNode<>(7);
+        root.left.right.left = new TreeNode<>(8);
+        root.left.right.left.left = new TreeNode<>(10);
+        root.left.right.right = new TreeNode<>(9);
+        root.left.right.right.right = new TreeNode<>(11);
+        root.left.right.right.right.left = new TreeNode<>(12);
+        root.left.right.right.right.right = new TreeNode<>(13);
+        root.left.right.right.right.left.left = new TreeNode<>(14);
+        root.left.right.right.right.left.right = new TreeNode<>(15);
+        root.left.right.right.right.right.left = new TreeNode<>(16);
+        root.left.right.right.right.right.right = new TreeNode<>(17);
 
         System.out.println(rightViewFinder(root));
     }
