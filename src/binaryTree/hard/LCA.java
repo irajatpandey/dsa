@@ -87,5 +87,6 @@ public class LCA {
 
         TreeNode<Integer> lca = lowestCommonAncestor(root, 7, 8);
         System.out.println(lca.data);
+
     }
 }
