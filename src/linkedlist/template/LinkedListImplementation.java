@@ -1,60 +1,66 @@
 package linkedlist.template;
-//import linkedlist.template.Node;
 
 public class LinkedListImplementation<T> {
     private Node<T> head;
-    public LinkedListImplementation(){
+
+    // Constructor to initialize the linked list with a null head
+    public LinkedListImplementation() {
         this.head = null;
     }
-    private int getSize(){
+
+    // Method to get the size of the linked list
+    private int getSize() {
         Node<T> temp = head;
         int count = 0;
-        while(temp != null){
+        while (temp != null) {
             count++;
             temp = temp.next;
         }
         return count;
     }
-    public Node getHead(){
+
+    // Method to get the head of the linked list
+    public Node<T> getHead() {
         return this.head;
     }
-    private boolean isEmpty(){
+
+    // Method to check if the linked list is empty
+    private boolean isEmpty() {
         return head == null;
     }
-    public void addAtBeginning(T data){
+
+    // Method to add a node at the beginning of the linked list
+    public void addAtBeginning(T data) {
         Node<T> newnode = new Node<>(data);
-        if(isEmpty()){
+        if (isEmpty()) {
             head = newnode;
-            return;
-        }
-        else{
+        } else {
             newnode.next = head;
             head = newnode;
         }
     }
-    public void addAtEnd(T data){
+
+    // Method to add a node at the end of the linked list
+    public void addAtEnd(T data) {
         Node<T> newnode = new Node<>(data);
-        if(isEmpty()){
+        if (isEmpty()) {
             head = newnode;
-        }
-        else{
+        } else {
             Node<T> temp = head;
-            while(temp.next != null){
+            while (temp.next != null) {
                 temp = temp.next;
             }
             temp.next = newnode;
         }
     }
 
-
-
-    public void display(){
+    // Method to display the elements of the linked list
+    public void display() {
         Node<T> temp = head;
-        while(temp != null){
+        while (temp != null) {
             System.out.print(temp.data + " ");
             temp = temp.next;
         }
         System.out.println();
     }
 }
-
