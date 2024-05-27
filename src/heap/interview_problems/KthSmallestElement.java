@@ -6,7 +6,7 @@ public class KthSmallestElement {
 
     /**
      * Finds the kth smallest element in an array using a min-heap.
-     *
+     * Time complexity: O(N log N), Space complexity: O(N)
      * @param nums The array of integers.
      * @param k    The value of k.
      * @return The kth smallest element.

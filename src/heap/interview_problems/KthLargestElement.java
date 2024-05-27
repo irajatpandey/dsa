@@ -1,12 +1,12 @@
 package heap.interview_problems;
 
 import java.util.PriorityQueue;
-
+//https://leetcode.com/problems/kth-largest-element-in-an-array/description/
 public class KthLargestElement {
 
     /**
      * Finds the kth largest element in an array using a max-heap.
-     *
+     *Time complexity: O(N log N), Space complexity: O(N)
      * @param nums The array of integers.
      * @param k    The value of k.
      * @return The kth largest element.
