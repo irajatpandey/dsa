@@ -14,11 +14,11 @@ public class KthLargestElement {
     public static int findKthLargest(int[] nums, int k) {
         // Create a max-heap using PriorityQueue with a custom comparator
         PriorityQueue<Integer> maxHeap = new PriorityQueue<>((a, b) -> b - a);
-
         // Add all elements of the array to the max-heap
         for (int ele : nums) {
             maxHeap.add(ele);
         }
+        System.out.println(maxHeap);
 
         // Remove k - 1 largest elements
         while (k > 1) {
