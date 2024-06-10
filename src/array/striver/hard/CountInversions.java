@@ -3,12 +3,12 @@ package array.striver.hard;
 import java.util.ArrayList;
 
 public class CountInversions {
-    public static int numberOfInversions_bruteForce(int []arr, int n) {
+    public static int numberOfInversions_bruteForce(int[] arr, int n) {
         int ans = 0;
 
-        for(int i = 0; i < n; i++){
-            for(int j = i; j < n; j++){
-                if(arr[i] > arr[j]){
+        for (int i = 0; i < n; i++) {
+            for (int j = i; j < n; j++) {
+                if (arr[i] > arr[j]) {
                     ans++;
                 }
             }
@@ -17,7 +17,7 @@ public class CountInversions {
         return ans;
     }
 
-    public static int merge(int[] arr, int start, int mid, int end){
+    public static int merge(int[] arr, int start, int mid, int end) {
         int left = 0, right = 0, count = 0;
 
         // Create Two Arrays
@@ -25,23 +25,22 @@ public class CountInversions {
         int[] rightArray = new int[end - mid];
 
         // Copy first Half
-        for(int i = 0; i < leftArray.length; i++){
+        for (int i = 0; i < leftArray.length; i++) {
             leftArray[i] = arr[start + i];
         }
 
         // Copy Second Half
-        for(int i = 0; i < rightArray.length; i++){
+        for (int i = 0; i < rightArray.length; i++) {
             rightArray[i] = arr[mid + 1 + i];
         }
 
         // Merge
         int k = start;
-        while(left < leftArray.length && right < rightArray.length){
-            if(leftArray[left] <= rightArray[right]){
+        while (left < leftArray.length && right < rightArray.length) {
+            if (leftArray[left] <= rightArray[right]) {
                 arr[k] = leftArray[left];
                 left++;
-            }
-            else{
+            } else {
                 arr[k] = rightArray[right];
                 count += (mid + 1) - (start + left);
                 right++;
@@ -49,39 +48,39 @@ public class CountInversions {
             k++;
         }
 
-        while(left < leftArray.length){
+        while (left < leftArray.length) {
             arr[k] = leftArray[left];
             k++;
             left++;
         }
 
-        while(right < rightArray.length){
+        while (right < rightArray.length) {
             arr[k] = rightArray[right];
             k++;
             right++;
         }
         return count;
     }
-    public static int mergeSort(int[] arr, int start, int end){
+
+    public static int mergeSort(int[] arr, int start, int end) {
         int count = 0;
-        if(start < end){
-            int mid = (start + end)/2;
+        if (start < end) {
+            int mid = (start + end) / 2;
 
             // Merge Sort Call
             count += mergeSort(arr, start, mid);
             count += mergeSort(arr, mid + 1, end);
-            count += merge(arr,start, mid, end);
+            count += merge(arr, start, mid, end);
         }
         return count;
     }
 
-    public static int numberOfInversions_mergeSort(int []arr, int n) {
+    public static int numberOfInversions_mergeSort(int[] arr, int n) {
         int totalCount = mergeSort(arr, 0, n);
 
         return totalCount;
 
     }
-
 
 
     public static void main(String[] args) {
