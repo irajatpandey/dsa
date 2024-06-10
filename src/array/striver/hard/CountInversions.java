@@ -17,49 +17,41 @@ public class CountInversions {
         return ans;
     }
 
-    public static int merge(int[] arr, int start, int mid, int end) {
-        int left = 0, right = 0, count = 0;
+    private static int merge(int[] arr, int start, int mid, int end) {
+        int leftIndex = start; // Starting index for the left subarray
+        int rightIndex = mid + 1; // Starting index for the right subarray
+        int inversionCount = 0;
+        int[] temp = new int[end - start + 1]; // Temporary array for merging
+        int k = 0; // Index for the temporary array
 
-        // Create Two Arrays
-        int[] leftArray = new int[mid - start + 1];
-        int[] rightArray = new int[end - mid];
-
-        // Copy first Half
-        for (int i = 0; i < leftArray.length; i++) {
-            leftArray[i] = arr[start + i];
-        }
-
-        // Copy Second Half
-        for (int i = 0; i < rightArray.length; i++) {
-            rightArray[i] = arr[mid + 1 + i];
-        }
-
-        // Merge
-        int k = start;
-        while (left < leftArray.length && right < rightArray.length) {
-            if (leftArray[left] <= rightArray[right]) {
-                arr[k] = leftArray[left];
-                left++;
+        // Merge the two subarrays into the temporary array
+        while (leftIndex <= mid && rightIndex <= end) {
+            if (arr[leftIndex] <= arr[rightIndex]) {
+                temp[k++] = arr[leftIndex++];
             } else {
-                arr[k] = rightArray[right];
-                count += (mid + 1) - (start + left);
-                right++;
+                temp[k++] = arr[rightIndex++];
+                // Count inversions: all remaining elements in the left subarray
+                // are greater than the current element from the right subarray
+                inversionCount += (mid - leftIndex + 1);
             }
-            k++;
         }
 
-        while (left < leftArray.length) {
-            arr[k] = leftArray[left];
-            k++;
-            left++;
+        // Copy the remaining elements of the left subarray, if any
+        while (leftIndex <= mid) {
+            temp[k++] = arr[leftIndex++];
         }
 
-        while (right < rightArray.length) {
-            arr[k] = rightArray[right];
-            k++;
-            right++;
+        // Copy the remaining elements of the right subarray, if any
+        while (rightIndex <= end) {
+            temp[k++] = arr[rightIndex++];
         }
-        return count;
+
+        // Copy the merged subarray back into the original array
+        for (int i = 0; i < temp.length; i++) {
+            arr[start + i] = temp[i];
+        }
+
+        return inversionCount;
     }
 
     public static int mergeSort(int[] arr, int start, int end) {
