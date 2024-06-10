@@ -1,7 +1,6 @@
 package array.striver.hard;
 
-import java.util.ArrayList;
-
+//https://www.geeksforgeeks.org/problems/inversion-of-array-1587115620/1
 public class CountInversions {
     public static int numberOfInversions_bruteForce(int[] arr, int n) {
         int ans = 0;
