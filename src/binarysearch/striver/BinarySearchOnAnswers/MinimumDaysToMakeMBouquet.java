@@ -1,78 +1,115 @@
 package binarysearch.striver.BinarySearchOnAnswers;
 // https://leetcode.com/problems/minimum-number-of-days-to-make-m-bouquets/description/
 public class MinimumDaysToMakeMBouquet {
-    public static boolean possible(int[] arr, int day, int m, int k) {
-        int n = arr.length; // Size of the array
-        int cnt = 0;
-        int noOfB = 0;
-        // Count the number of bouquets:
-        for (int i = 0; i < n; i++) {
-            if (arr[i] <= day) {
-                cnt++;
-            } else {
-                noOfB += (cnt / k);
-                cnt = 0;
+    /**
+     * Checks if it's possible to make m bouquets from the bloomDay array
+     * within the given number of days.
+     *
+     * @param bloomDay Array of integers representing the bloom day of each flower.
+     * @param day The day to check if m bouquets can be made.
+     * @param m Number of bouquets needed.
+     * @param k Number of consecutive flowers needed to make one bouquet.
+     * @return True if m bouquets can be made within 'day' days, otherwise false.
+     *
+     * Time Complexity: O(n) where n is the length of bloomDay array.
+     * Space Complexity: O(1)
+     */
+    private static boolean possible(int[] bloomDay, int day, int m, int k) {
+        int count = 0;
+        int numberOfBouquet = 0;
+
+        for(int i = 0; i < bloomDay.length; i++) {
+            if(bloomDay[i] <= day) {
+                count++;
+            }
+            else{
+                numberOfBouquet += (count / k);
+                count = 0;
             }
         }
-        noOfB += (cnt / k);
-        return noOfB >= m;
+        numberOfBouquet += (count / k);
+        return numberOfBouquet >= m;
+    }
+    /**
+     * Brute force approach to find the minimum days required to make m bouquets.
+     *
+     * @param bloomDay Array of integers representing the bloom day of each flower.
+     * @param m Number of bouquets needed.
+     * @param k Number of consecutive flowers needed to make one bouquet.
+     * @return The minimum days required or -1 if it's not possible.
+     *
+     * Time Complexity: O((max - min) * n) where max and min are the maximum and minimum
+     * values in bloomDay and n is the length of bloomDay array.
+     * Space Complexity: O(1)
+     */
+    public static int minDaysBruteForce(int[] bloomDay, int m, int k) {
+        int minDay = Integer.MAX_VALUE, maxDay = Integer.MIN_VALUE;
+
+        if(bloomDay.length < m * k) {
+            return -1;
+        }
+
+        for(int ele : bloomDay) {
+            minDay = Math.min(minDay, ele);
+            maxDay = Math.max(maxDay, ele);
+        }
+
+        // Check each day from minDay to maxDay
+        for (int day = minDay; day <= maxDay; day++) {
+            if (possible(bloomDay, day, m, k)) {
+                return day;
+            }
+        }
+        return -1;
     }
 
+    /**
+     * Optimized approach using binary search to find the minimum days required
+     * to make m bouquets.
+     *
+     * @param bloomDay Array of integers representing the bloom day of each flower.
+     * @param m Number of bouquets needed.
+     * @param k Number of consecutive flowers needed to make one bouquet.
+     * @return The minimum days required or -1 if it's not possible.
+     *
+     * Time Complexity: O(n * log(max - min)) where max and min are the maximum and minimum
+     * values in bloomDay and n is the length of bloomDay array.
+     * Space Complexity: O(1)
+     */
     public static int minDays(int[] bloomDay, int m, int k) {
-        int n = bloomDay.length;
-        if (m * k > n) return -1;
-        int minimumDay = Integer.MAX_VALUE, maxDay = Integer.MIN_VALUE;
-        for(int i = 0; i < bloomDay.length; i++){
-            minimumDay = Math.min(minimumDay, bloomDay[i]);
-            maxDay = Math.max(maxDay, bloomDay[i]);
+        int minDay = Integer.MAX_VALUE, maxDay = Integer.MIN_VALUE;
+        int ans = -1;
+        if(bloomDay.length < m * k) {
+            return -1;
         }
 
-        int low = minimumDay, high = maxDay;
+        for(int ele : bloomDay) {
+            minDay = Math.min(minDay, ele);
+            maxDay = Math.max(maxDay, ele);
+        }
 
-        while(low <= high){
-            int mid = low + (high - low)/2;
-            if(possible(bloomDay, mid, m, k) == true){
-               high = mid - 1;
-            }
-
-            else{
+        int low = minDay, high = maxDay;
+        while(low <= high) {
+            int mid = low + (high - low) / 2;
+            if(possible(bloomDay, mid, m, k)) {
+                ans = mid;
+                high = mid - 1;
+            } else {
                 low = mid + 1;
             }
         }
-
-        return low;
-    }
-    public static int minDays_bruteforce(int[] bloomsDay, int m, int k) {
-        int ans = -1;
-        int n = bloomsDay.length;
-        if(m * k >  n) return -1;
-
-        int minimumDay = Integer.MAX_VALUE, maxDay = Integer.MIN_VALUE;
-        for(int i = 0; i < bloomsDay.length; i++){
-            minimumDay = Math.min(minimumDay, bloomsDay[i]);
-            maxDay = Math.max(maxDay, bloomsDay[i]);
-        }
-
-
-        int total_bouquet = 0;
-        int cnt = 0;
-
-        for(int i = minimumDay; i <= maxDay; i++){
-
-            if(possible(bloomsDay, i, m, k) == true){
-                return i;
-            }
-
-        }
-
         return ans;
     }
+
+
     public static void main(String[] args) {
-        int[] bloomsday = {1,10,3,10,2};
+        int[] bloomDay = {1, 10, 3, 10, 2};
         int m = 3, k = 1;
 
-        int output = minDays(bloomsday, m, k);
-        System.out.println(output);
+        // Test the brute force approach
+        System.out.println("Brute Force: " + minDaysBruteForce(bloomDay, m, k));
 
+        // Test the optimized binary search approach
+        System.out.println("Binary Search: " + minDays(bloomDay, m, k));
     }
 }
