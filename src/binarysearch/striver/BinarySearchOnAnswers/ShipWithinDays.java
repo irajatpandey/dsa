@@ -1,44 +1,80 @@
 package binarysearch.striver.BinarySearchOnAnswers;
-// https://leetcode.com/problems/capacity-to-ship-packages-within-d-days/
+
+//https://leetcode.com/problems/capacity-to-ship-packages-within-d-days/
 public class ShipWithinDays {
-    public static  boolean possible(int[] weights, int D, int capacity){
-        int days = 1, current_capacity = 0;
+    private static boolean canShipWithinDays(int[] weights, int days, int capacity) {
+        int requiredDays = 1; // Start with the first day
+        int currentLoad = 0;  // Current load of the ship for the day
 
-        for(int weight : weights){
-            if(current_capacity + weight > capacity){
-                days++;
-                current_capacity = weight;
-            }else{
-                current_capacity += weight;
+        for (int weight : weights) {
+            // Check if adding the current weight exceeds the ship's capacity
+            if (currentLoad + weight > capacity) {
+                requiredDays++; // Increment the day count
+                currentLoad = weight; // Start the next day with the current weight
+            } else {
+                currentLoad += weight; // Add the weight to the current day's load
             }
         }
-        return days <= D;
+        // Return true if the number of required days is within the given days
+        return requiredDays <= days;
     }
+
+    public static int shipWithinDaysBruteForce(int[] weights, int days) {
+        // Initialize the minimum and maximum capacity required
+        int minCapacity = Integer.MAX_VALUE;
+        int maxCapacity = 0;
+
+        // Calculate the minimum and maximum possible ship capacity
+        for (int weight : weights) {
+            minCapacity = Math.min(minCapacity, weight);
+            maxCapacity += weight;
+        }
+
+        // Iterate over all possible capacities from minimum to maximum
+        for (int capacity = minCapacity; capacity <= maxCapacity; capacity++) {
+            // Check if the current capacity can ship all packages within the given days
+            if (canShipWithinDays(weights, days, capacity)) {
+                return capacity; // Return the first viable capacity
+            }
+        }
+        return -1; // If no viable capacity found, return -1
+    }
+
+
     public static int shipWithinDays(int[] weights, int days) {
+        // Initialize the minimum and maximum capacity required
+        int minCapacity = Integer.MAX_VALUE;
+        int maxCapacity = 0;
 
-        int low = Integer.MAX_VALUE, high = 0;
-
-        for(int ele : weights){
-            high += ele;
-            low = Math.min(ele, low);
+        // Calculate the minimum and maximum possible ship capacity
+        for (int weight : weights) {
+            minCapacity = Math.min(minCapacity, weight);
+            maxCapacity += weight;
         }
 
-        while(low <= high){
-            int mid = low + (high - low)/2;
-            if(possible(weights, days, mid)){
-                high = mid - 1;
-            }
-            else{
-                low = mid + 1;
+        // Set the initial search range for the binary search
+        int low = minCapacity, high = maxCapacity;
+
+        // // Check if the current midCapacity can ship all packages within the given days
+        while (low <= high) {
+            int mid = low + (high - low) / 2;
+            if (canShipWithinDays(weights, days, mid)) {
+                high = mid - 1; // Try for a smaller capacity
+            } else {
+                low = mid + 1; // // Increase capacity
             }
         }
-        return low;
+        return low; //  // The minimum capacity that can ship all packages within days
     }
 
     public static void main(String[] args) {
-        int[] weights = {1,2,3,4,5,6,7,8,9,10};
+        int[] weights = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
         int days = 5;
 
-        System.out.println(shipWithinDays(weights, days));
+        // Output for the brute force approach
+        System.out.println("Brute Force Result: " + shipWithinDaysBruteForce(weights, days));
+
+        // Output for the binary search optimal approach
+        System.out.println("Optimal Binary Search Result: " + shipWithinDays(weights, days));
     }
 }
