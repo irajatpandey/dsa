@@ -19,6 +19,8 @@ public class ShipWithinDays {
         return requiredDays <= days;
     }
 
+    // Time Complexity: O((sum(weights) - max(weights) + 1) * N)
+    // Space Complexity: O(1)
     public static int shipWithinDaysBruteForce(int[] weights, int days) {
         // Initialize the minimum and maximum capacity required
         int minCapacity = Integer.MAX_VALUE;
@@ -40,7 +42,8 @@ public class ShipWithinDays {
         return -1; // If no viable capacity found, return -1
     }
 
-
+    // Time Complexity: O(log(sum(weights) - max(weights) + 1) * N)
+    // Space Complexity: O(1)
     public static int shipWithinDays(int[] weights, int days) {
         // Initialize the minimum and maximum capacity required
         int minCapacity = Integer.MAX_VALUE;
@@ -58,9 +61,10 @@ public class ShipWithinDays {
         // // Check if the current midCapacity can ship all packages within the given days
         while (low <= high) {
             int mid = low + (high - low) / 2;
-            if (canShipWithinDays(weights, days, mid)) {
+            if(canShipWithinDays(weights, days, mid)){
                 high = mid - 1; // Try for a smaller capacity
-            } else {
+            }
+            else{
                 low = mid + 1; // // Increase capacity
             }
         }
