@@ -1,4 +1,4 @@
-package windowsliding.striver.medium;
+package slidingwindow.striver.medium;
 //https://leetcode.com/problems/longest-repeating-character-replacement/
 
 public class LongestRepeatingCharacterReplacement {

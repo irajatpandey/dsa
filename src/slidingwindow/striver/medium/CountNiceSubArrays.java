@@ -1,4 +1,4 @@
-package windowsliding.striver.medium;
+package slidingwindow.striver.medium;
 //https://leetcode.com/problems/count-number-of-nice-subarrays/
 public class CountNiceSubArrays {
     // Function to calculate the count of subarrays with at most k odd numbers

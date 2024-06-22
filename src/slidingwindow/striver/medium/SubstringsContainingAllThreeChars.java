@@ -1,4 +1,4 @@
-package windowsliding.striver.medium;
+package slidingwindow.striver.medium;
 //https://leetcode.com/problems/number-of-substrings-containing-all-three-characters/
 public class SubstringsContainingAllThreeChars {
 

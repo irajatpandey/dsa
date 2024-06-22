@@ -1,4 +1,4 @@
-package windowsliding.adityaverma;
+package slidingwindow.adityaverma;
 
 public class LongestSubArrayWithSumK {
     public static int longestSubArrayWithSumk(int arr[], int n, int sum){

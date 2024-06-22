@@ -1,4 +1,4 @@
-package windowsliding.striver.medium;
+package slidingwindow.striver.medium;
 // https://leetcode.com/problems/binary-subarrays-with-sum/
 public class BinarySubarraysWithSum {
     public static int countSubarraysWithSumBruteForce(int[] nums, int goal) {

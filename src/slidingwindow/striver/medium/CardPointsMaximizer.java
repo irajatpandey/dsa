@@ -1,4 +1,4 @@
-package windowsliding.striver.medium;
+package slidingwindow.striver.medium;
 //https://leetcode.com/problems/maximum-points-you-can-obtain-from-cards/description/
 public class CardPointsMaximizer {
 

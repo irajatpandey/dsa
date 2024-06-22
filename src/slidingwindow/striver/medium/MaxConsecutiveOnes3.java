@@ -1,4 +1,4 @@
-package windowsliding.striver.medium;
+package slidingwindow.striver.medium;
 //https://leetcode.com/problems/max-consecutive-ones-iii/description/
 public class MaxConsecutiveOnes3 {
     public static int longestOnesBruteForce(int[] nums, int k) {
